@@ -9,8 +9,8 @@ export class AppHome {
   render() {
     return (
       <div class="app-home">
-        <p>
-          Welcome to the Stencil App Starter. You can use this starter to build entire apps all with web components using Stencil! Check out our docs on{' '}
+        <p>Aum Ganapathaye Namaha{' '}
+          
           <a href="https://stenciljs.com">stenciljs.com</a> to get started.
         </p>
 
