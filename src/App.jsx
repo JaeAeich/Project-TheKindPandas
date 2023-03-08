@@ -9,7 +9,7 @@ function App() {
 	return (
 		<div className="App bg-gray-200 h-screen w-screen ">
 			<BrowserRouter>
-			<Navbar />
+				<Navbar />
 				<Routes>
 					<Route path="/" element={<Hero />} />
 					<Route path="/array" element={<Array />} />
@@ -21,5 +21,4 @@ function App() {
 		</div>
 	);
 }
-
 export default App;

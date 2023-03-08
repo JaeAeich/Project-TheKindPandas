@@ -6,8 +6,10 @@ function Array() {
 	const [lowerBound, setLowerBound] = useState("");
 	const [numElements, setNumElements] = useState("");
 	const [separator, setSeparator] = useState(",");
-	const [numVectors, setNumVectors] = useState("");
+	const [numVectors, setNumVectors] = useState(1);
 	const [vectorType, setVectorType] = useState("column");
+	const [answer, setAnswer] = useState(null);
+	const [error, setError] = useState(null);
 
 	const handleUpperBoundChange = (e) => {
 		setUpperBound(e.target.value);
@@ -35,7 +37,67 @@ function Array() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// logic :TODO
+		// setAnswer(null);
+		// setError(null);
+
+		// validate input values
+		if (
+			isNaN(parseInt(upperBound)) ||
+			isNaN(parseInt(lowerBound)) ||
+			isNaN(parseInt(numElements)) ||
+			isNaN(parseInt(numVectors))
+		) {
+			setError("Invalid input value. Please enter a valid integer value.");
+			return;
+		}
+		if (parseInt(upperBound) < parseInt(lowerBound)) {
+			setError("Upper bound should be greater than or equal to lower bound.");
+			return;
+		}
+		if (parseInt(numElements) <= 0) {
+			setError("Number of elements should be a positive integer.");
+			return;
+		}
+		if (parseInt(numVectors) <= 0) {
+			setError("Number of vectors should be a positive integer.");
+			return;
+		}
+
+		// parse input values
+		const upper = parseInt(upperBound);
+		const lower = parseInt(lowerBound);
+		const n = parseInt(numElements);
+		const sep = separator.trim();
+		const numVecs = parseInt(numVectors);
+		const isRow = vectorType === "row";
+
+		// generate random vector
+		const randVecs = [];
+		for (let j = 0; j < n; j++) {
+			const randVec = [];
+			for (let i = 0; i < numVecs; i++) {
+				const randNum = Math.floor(Math.random() * (upper - lower + 1) + lower);
+				randVec.push(randNum);
+			}
+			randVecs.push(randVec);
+		}
+
+		// format vector as string
+		let answer = "";
+		if (isRow) {
+			answer = randVecs.map((vec) => "[" + vec.join(sep) + "]").join(",\n");
+		} else {
+			answer = randVecs[0]
+				.map((_, i) => "[" + randVecs.map((vec) => vec[i]).join(sep) + "]")
+				.join(",\n");
+		}
+
+		if (numVecs > 1) {
+			answer = "[" + answer + "]";
+		}
+
+		// update answer div
+		setAnswer(answer);
 		setAnsFlag(true);
 	};
 
@@ -112,7 +174,6 @@ function Array() {
 									name="numVectors"
 									value={numVectors}
 									onChange={handleNumVectorsChange}
-									required
 								/>
 							</div>
 							<div className="flex justify-start items-center space-x-4">
@@ -145,7 +206,7 @@ function Array() {
 							</div>
 							<button
 								type="submit"
-								className="text-sky-800 text-xl text-center border-2 border-sky-800 rounded-lg p-2 focus:shadow-xl active:shadow-sm  active:text-gray-200 active:bg-sky-800 select-none w-full md:w-auto"
+								className="text-sky-800 text-xl text-center border-2 border-sky-800 md:w-full rounded-lg p-2 focus:shadow-xl active:shadow-sm  active:text-gray-200 active:bg-sky-800 select-none w-full "
 							>
 								Generate Array
 							</button>
@@ -153,11 +214,8 @@ function Array() {
 					</div>
 					{ansFlag && (
 						<div className="answer max-w-[720p] mx-auto p-2">
-							<div className="ans border-2 border-sky-800 p-2 rounded-lg ">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure,
-								aliquid maiores dolorem molestias numquam ut nesciunt
-								necessitatibus quod earum quidem natus fugit ducimus commodi
-								consequuntur eveniet nisi illum non tenetur.
+							<div className="ans border-2 border-sky-800 p-2 rounded-lg overflow-y-scroll max-h-44 overflow-x-hidden break-words">
+								{error ? error : answer}
 							</div>
 						</div>
 					)}

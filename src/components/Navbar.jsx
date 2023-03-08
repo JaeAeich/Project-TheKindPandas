@@ -7,7 +7,7 @@ function Navbar() {
 		<div className="navbar w-full p-4 flex mx-auto">
 			<div className="nav flex w-full justify-between md:max-w-[1020px] md:mx-auto">
 				<div className="brand-name text-3xl md:text-5xl text-sky-800 font-semibold">
-					<Link to="/">CaseCraft</Link> 
+					<Link to="/">CaseCraft</Link>
 				</div>
 				<div className="contacts flex space-x-4">
 					<div className="gh flex justify-center items-center space-x-2">

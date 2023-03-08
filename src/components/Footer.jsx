@@ -1,6 +1,5 @@
 import React from "react";
 import Typed from "react-typed";
-import { AiFillHeart } from "react-icons/ai";
 
 function Footer() {
 	return (
@@ -9,7 +8,12 @@ function Footer() {
 				<div className="text">Made</div>
 				<Typed
 					className="text-cyan-400"
-					strings={[`with 💗`, "Jae Aeich", "Sooraj Reddy", "JV Aditya"]}
+					strings={[
+						`with 💗`,
+						"By Jae Aeich",
+						"By Sooraj Reddy",
+						"By JV Aditya",
+					]}
 					typeSpeed={40}
 					backSpeed={50}
 					attr="placeholder"
