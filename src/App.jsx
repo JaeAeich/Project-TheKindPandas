@@ -8,8 +8,8 @@ import NoPage from "./components/NoPage";
 function App() {
 	return (
 		<div className="App bg-gray-200 h-screen w-screen ">
-			<Navbar />
 			<BrowserRouter>
+			<Navbar />
 				<Routes>
 					<Route path="/" element={<Hero />} />
 					<Route path="/array" element={<Array />} />
