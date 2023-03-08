@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
 	return (
@@ -22,10 +23,10 @@ function Hero() {
 				</div>
 				<div className="button w-full flex space-x-2 justify-center items-center">
 					<div className="Array md:text-3xl md:px-6 border-sky-800 rounded-xl border p-2 text-sky-800 hover:shadow-xl active:shadow-md select-none active:text-sky-600">
-						Array
+						<Link to="/array">Array</Link>
 					</div>
 					<div className="string md:text-3xl md:px-6 border-sky-800 rounded-xl border p-2 text-sky-800 hover:shadow-xl active:shadow-md select-none active:text-sky-600">
-						String
+						<Link to="/string">String</Link>
 					</div>
 				</div>
 			</div>
