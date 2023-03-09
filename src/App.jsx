@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Array from "./components/Array";
 import String from "./components/String";
 import NoPage from "./components/NoPage";
+import Contact from "./components/Contact";
 function App() {
 	return (
 		<div className="App bg-gray-200 h-screen w-screen ">
@@ -14,6 +15,7 @@ function App() {
 					<Route path="/" element={<Hero />} />
 					<Route path="/array" element={<Array />} />
 					<Route path="/string" element={<String />} />
+					<Route path="/contact" element={<Contact />} />
 					<Route path="*" element={<NoPage />} />
 				</Routes>
 			</BrowserRouter>
