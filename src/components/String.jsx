@@ -123,6 +123,7 @@ function StringGenerator() {
 							</div>
 							<div className="space-y-2 md:text-2xl text-sm flex-col justify-center items-center">
 								<label className="text-gray-700">Character Type:</label>
+								<div className="flex justify-center items-center space-x-4">
 								<div className="space-x-2 flex items-center">
 									<input
 										type="checkbox"
@@ -171,10 +172,12 @@ function StringGenerator() {
 										Special
 									</label>
 								</div>
+								</div>
 							</div>
+							
 							<button
 								type="submit"
-								className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+								className="text-sky-800 text-xl text-center border-2 border-sky-800 md:w-full rounded-lg p-2 focus:shadow-xl active:shadow-sm  active:text-gray-200 active:bg-sky-800 select-none w-full "
 							>
 								Generate Strings
 							</button>
