@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiFillCopy } from "react-icons/ai";
 
 function Array() {
 	const [upperBound, setUpperBound] = useState("");
@@ -100,6 +101,10 @@ function Array() {
 		setAnswer(answer);
 		setAnsFlag(true);
 	};
+
+	function handleCopyClick() {
+		navigator.clipboard.writeText(answer);
+	}
 
 	return (
 		<div className=" md:flex justify-center items-center">
@@ -213,8 +218,17 @@ function Array() {
 						</form>
 					</div>
 					{ansFlag && (
-						<div className="answer max-w-[720p] mx-auto p-2">
+						<div className="answer max-w-[720p] mx-auto p-1 select-none">
 							<div className="ans border-2 border-sky-800 p-2 rounded-lg overflow-y-scroll max-h-44 overflow-x-hidden break-words">
+								<div className="ans-header flex justify-between items-center p-3 text-sky-800 font-bold">
+									<div className="text-lg md:text-xl">Answer</div>
+									<div
+										className="text-xl md:text-2xl border-2 rounded-lg border-sky-800 p-2 hover:shadow-md active:bg-sky-800 active:text-gray-200 active:shadow-2xl"
+										onClick={handleCopyClick}
+									>
+										<AiFillCopy />
+									</div>
+								</div>
 								{error ? error : answer}
 							</div>
 						</div>
