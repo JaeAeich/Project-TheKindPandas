@@ -3,7 +3,7 @@ import Typed from "react-typed";
 
 function Footer() {
 	return (
-		<div className="footer flex justify-center items-center w-full bg-cyan-800 p-4 bottom-0 absolute mx-auto">
+		<div className="footer flex justify-center items-center w-full bg-cyan-800 p-4 bottom-0 fixed mx-auto">
 			<div className="contain flex space-x-2">
 				<div className="text">Made</div>
 				<Typed
