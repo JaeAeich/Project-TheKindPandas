@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
 
 function StringGenerator() {
-	const [stringLength, setStringLength] = useState(8);
-	const [numStrings, setNumStrings] = useState(1);
+	const [stringLength, setStringLength] = useState(" ");
+	const [numStrings, setNumStrings] = useState(" ");
 	const [includeLowercase, setIncludeLowercase] = useState(true);
 	const [includeUppercase, setIncludeUppercase] = useState(true);
-	const [includeNumeric, setIncludeNumeric] = useState(true);
-	const [includeSpecial, setIncludeSpecial] = useState(true);
+	const [includeNumeric, setIncludeNumeric] = useState(false);
+	const [includeSpecial, setIncludeSpecial] = useState(false);
 	const [generatedStrings, setGeneratedStrings] = useState(null);
 	const [isGenerating, setIsGenerating] = useState(false);
 	const [error, setError] = useState(null);
