@@ -8,7 +8,7 @@ function Array() {
 	const [numElements, setNumElements] = useState("");
 	const [separator, setSeparator] = useState(",");
 	const [numVectors, setNumVectors] = useState(1);
-	const [vectorType, setVectorType] = useState("column");
+	const [vectorType, setVectorType] = useState("row");
 	const [braceType, setbraceType] = useState("  ");
 	const [answer, setAnswer] = useState(null);
 	const [error, setError] = useState(null);
@@ -73,27 +73,28 @@ function Array() {
 		const lower = parseInt(lowerBound);
 		const n = parseInt(numElements);
 		let sep = separator.trim();
-		if(sep == ""){
+		if (sep == "") {
 			sep = " ";
-			}
+		}
 		const numVecs = parseInt(numVectors);
 		const isRow = vectorType === "row";
 
 		// generate random vector
 		const randVecs = [];
-		for (let j = 0; j < n; j++) {
+		for (let j = 0; j < numVecs; j++) {
 			const randVec = [];
-			for (let i = 0; i < numVecs; i++) {
+			for (let i = 0; i < n; i++) {
 				const randNum = Math.floor(Math.random() * (upper - lower + 1) + lower);
 				randVec.push(randNum);
 			}
 			randVecs.push(randVec);
 		}
+		console.log(randVecs);
 
 		// format vector as string
 		let answer = "";
-		let bl=braceType[0];
-		let br=braceType[1];
+		let bl = braceType[0];
+		let br = braceType[1];
 		if (isRow) {
 			answer = randVecs.map((vec) => bl + vec.join(sep) + br).join(",\n");
 		} else {
@@ -192,21 +193,8 @@ function Array() {
 							</div>
 							<div className="flex justify-start items-center space-x-4">
 								<div className="flex justify-center items-center space-x-2">
-									<label className="text-gray-700 text-xs md:text-lg  ">
-										Row Vector
-									</label>
-									<input
-										className="accent-cyan-800   "
-										type="radio"
-										name="vectorType"
-										value="column"
-										checked={vectorType === "column"}
-										onChange={handleVectorTypeChange}
-									/>
-								</div>
-								<div className="flex justify-center items-center space-x-2">
 									<label className="text-xs md:text-lg text-gray-700 ">
-										Column Vector
+										Row Vector
 									</label>
 									<input
 										className="accent-cyan-800   "
@@ -214,6 +202,19 @@ function Array() {
 										checked={vectorType === "row"}
 										name="vectorType"
 										value="row"
+										onChange={handleVectorTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-gray-700 text-xs md:text-lg  ">
+										Column Vector
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="vectorType"
+										value="column"
+										checked={vectorType === "column"}
 										onChange={handleVectorTypeChange}
 									/>
 								</div>
@@ -234,7 +235,7 @@ function Array() {
 								</div>
 								<div className="flex justify-center items-center space-x-2">
 									<label className="text-gray-700 text-xs md:text-lg  ">
-										 flower bracket
+										flower bracket
 									</label>
 									<input
 										className="accent-cyan-800   "
@@ -260,7 +261,7 @@ function Array() {
 								</div>
 								<div className="flex justify-center items-center space-x-2">
 									<label className="text-gray-700 text-xs md:text-lg  ">
-										 bracket
+										bracket
 									</label>
 									<input
 										className="accent-cyan-800   "
