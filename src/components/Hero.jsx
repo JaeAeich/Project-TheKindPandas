@@ -29,7 +29,7 @@ function Hero() {
 						<Link to="/string">String</Link>
 					</div>
 					<div className="test md:text-3xl md:px-6 border-sky-800 rounded-xl border p-2 text-sky-800 hover:shadow-xl active:shadow-md select-none active:text-sky-600">
-						<Link to="/test">test</Link>
+						<Link to="/Graph">Graph</Link>
 					</div>					
 				</div>
 			</div>
