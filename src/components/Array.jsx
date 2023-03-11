@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
+import LineChart from "./LineChart";
 
 function Array() {
 	const [upperBound, setUpperBound] = useState("");
@@ -8,7 +9,9 @@ function Array() {
 	const [numElements, setNumElements] = useState("");
 	const [separator, setSeparator] = useState(",");
 	const [numVectors, setNumVectors] = useState(1);
-	const [vectorType, setVectorType] = useState("column");
+	const [vectorType, setVectorType] = useState("row");
+	const [braceType, setbraceType] = useState("  ");
+	const [data, setData] = useState(null);
 	const [answer, setAnswer] = useState(null);
 	const [error, setError] = useState(null);
 
@@ -34,6 +37,9 @@ function Array() {
 
 	const handleVectorTypeChange = (e) => {
 		setVectorType(e.target.value);
+	};
+	const handlebraceTypeChange = (e) => {
+		setbraceType(e.target.value);
 	};
 
 	const handleSubmit = (e) => {
@@ -68,33 +74,40 @@ function Array() {
 		const upper = parseInt(upperBound);
 		const lower = parseInt(lowerBound);
 		const n = parseInt(numElements);
-		const sep = separator.trim();
+		let sep = separator.trim();
+		if (sep == "") {
+			sep = " ";
+		}
 		const numVecs = parseInt(numVectors);
 		const isRow = vectorType === "row";
 
 		// generate random vector
 		const randVecs = [];
-		for (let j = 0; j < n; j++) {
+		for (let j = 0; j < numVecs; j++) {
 			const randVec = [];
-			for (let i = 0; i < numVecs; i++) {
+			for (let i = 0; i < n; i++) {
 				const randNum = Math.floor(Math.random() * (upper - lower + 1) + lower);
 				randVec.push(randNum);
 			}
 			randVecs.push(randVec);
 		}
+		setData(randVecs);
+		// console.log(randVecs);
 
 		// format vector as string
 		let answer = "";
+		let bl = braceType[0];
+		let br = braceType[1];
 		if (isRow) {
-			answer = randVecs.map((vec) => "[" + vec.join(sep) + "]").join(",\n");
+			answer = randVecs.map((vec) => bl + vec.join(sep) + br).join(",\n");
 		} else {
 			answer = randVecs[0]
-				.map((_, i) => "[" + randVecs.map((vec) => vec[i]).join(sep) + "]")
+				.map((_, i) => bl + randVecs.map((vec) => vec[i]).join(sep) + br)
 				.join(",\n");
 		}
 
 		if (numVecs > 1) {
-			answer = "[" + answer + "]";
+			answer = bl + answer + br;
 		}
 
 		// update answer div
@@ -107,7 +120,7 @@ function Array() {
 	}
 
 	return (
-		<div className=" md:flex justify-center items-center">
+		<div className=" md:flex justify-center items-center bg-gray-200">
 			<div className="mini-container w-screen max-w-[720px] ">
 				<div className="flex-col  justify-center items-center">
 					<div className="array-form p-4">
@@ -183,19 +196,6 @@ function Array() {
 							</div>
 							<div className="flex justify-start items-center space-x-4">
 								<div className="flex justify-center items-center space-x-2">
-									<label className="text-gray-700 text-xs md:text-lg  ">
-										Column Vector
-									</label>
-									<input
-										className="accent-cyan-800   "
-										type="radio"
-										name="vectorType"
-										value="column"
-										checked={vectorType === "column"}
-										onChange={handleVectorTypeChange}
-									/>
-								</div>
-								<div className="flex justify-center items-center space-x-2">
 									<label className="text-xs md:text-lg text-gray-700 ">
 										Row Vector
 									</label>
@@ -208,7 +208,75 @@ function Array() {
 										onChange={handleVectorTypeChange}
 									/>
 								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-gray-700 text-xs md:text-lg  ">
+										Column Vector
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="vectorType"
+										value="column"
+										checked={vectorType === "column"}
+										onChange={handleVectorTypeChange}
+									/>
+								</div>
 							</div>
+							<div className="flex justify-start items-center space-x-4">
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-xs md:text-lg text-gray-700 ">
+										without braces
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="  "
+										checked={braceType === "  "}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-gray-700 text-xs md:text-lg  ">
+										flower bracket
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="{}"
+										checked={braceType === "{}"}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-xs md:text-lg text-gray-700 ">
+										square bracket
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="[]"
+										checked={braceType === "[]"}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-gray-700 text-xs md:text-lg  ">
+										bracket
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="()"
+										checked={braceType === "()"}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+							</div>
+
 							<button
 								type="submit"
 								className="text-sky-800 text-xl text-center border-2 border-sky-800 md:w-full rounded-lg p-2 focus:shadow-xl active:shadow-sm  active:text-gray-200 active:bg-sky-800 select-none w-full "
@@ -233,6 +301,9 @@ function Array() {
 							</div>
 						</div>
 					)}
+				</div>
+				<div className="mb-96 ">
+					<LineChart randVecs={data} />
 				</div>
 			</div>
 		</div>
