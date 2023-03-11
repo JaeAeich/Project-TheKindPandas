@@ -13,17 +13,17 @@ function LineChart({ randVecs }) {
 		}
 		if (chartRef && chartRef.current && randVecs && randVecs.length > 0) {
 			const labels = [];
+			for (let j = 0; j < randVecs[0].length; j++) {
+				labels.push(j);
+			}
 			const datasets = [];
-
 			randVecs.forEach((vec, index) => {
-				const color = getRandomColor();
-				const data = vec.map((val, idx) => ({ x: idx, y: val }));
-
 				datasets.push({
 					label: `Vector ${index}`,
-					data: data,
-					borderColor: color,
-					backgroundColor: color,
+					data: vec,
+					borderColor: getRandomColor(),
+					// backgroundColor: getRandomColor(),
+					tension: 0.1,
 					fill: false,
 				});
 			});

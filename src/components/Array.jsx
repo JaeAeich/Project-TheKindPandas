@@ -120,7 +120,7 @@ function Array() {
 	}
 
 	return (
-		<div className=" md:flex justify-center items-center">
+		<div className=" md:flex justify-center items-center bg-gray-200">
 			<div className="mini-container w-screen max-w-[720px] ">
 				<div className="flex-col  justify-center items-center">
 					<div className="array-form p-4">
@@ -302,7 +302,7 @@ function Array() {
 						</div>
 					)}
 				</div>
-				<div className="mb-96">
+				<div className="mb-96 ">
 					<LineChart randVecs={data} />
 				</div>
 			</div>
