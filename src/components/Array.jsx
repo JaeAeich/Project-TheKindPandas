@@ -9,6 +9,7 @@ function Array() {
 	const [separator, setSeparator] = useState(",");
 	const [numVectors, setNumVectors] = useState(1);
 	const [vectorType, setVectorType] = useState("column");
+	const [braceType, setbraceType] = useState("  ");
 	const [answer, setAnswer] = useState(null);
 	const [error, setError] = useState(null);
 
@@ -34,6 +35,9 @@ function Array() {
 
 	const handleVectorTypeChange = (e) => {
 		setVectorType(e.target.value);
+	};
+	const handlebraceTypeChange = (e) => {
+		setbraceType(e.target.value);
 	};
 
 	const handleSubmit = (e) => {
@@ -68,7 +72,10 @@ function Array() {
 		const upper = parseInt(upperBound);
 		const lower = parseInt(lowerBound);
 		const n = parseInt(numElements);
-		const sep = separator.trim();
+		let sep = separator.trim();
+		if(sep == ""){
+			sep = " ";
+			}
 		const numVecs = parseInt(numVectors);
 		const isRow = vectorType === "row";
 
@@ -85,16 +92,18 @@ function Array() {
 
 		// format vector as string
 		let answer = "";
+		let bl=braceType[0];
+		let br=braceType[1];
 		if (isRow) {
-			answer = randVecs.map((vec) => "[" + vec.join(sep) + "]").join(",\n");
+			answer = randVecs.map((vec) => bl + vec.join(sep) + br).join(",\n");
 		} else {
 			answer = randVecs[0]
-				.map((_, i) => "[" + randVecs.map((vec) => vec[i]).join(sep) + "]")
+				.map((_, i) => bl + randVecs.map((vec) => vec[i]).join(sep) + br)
 				.join(",\n");
 		}
 
 		if (numVecs > 1) {
-			answer = "[" + answer + "]";
+			answer = bl + answer + br;
 		}
 
 		// update answer div
@@ -184,7 +193,7 @@ function Array() {
 							<div className="flex justify-start items-center space-x-4">
 								<div className="flex justify-center items-center space-x-2">
 									<label className="text-gray-700 text-xs md:text-lg  ">
-										Column Vector
+										Row Vector
 									</label>
 									<input
 										className="accent-cyan-800   "
@@ -197,7 +206,7 @@ function Array() {
 								</div>
 								<div className="flex justify-center items-center space-x-2">
 									<label className="text-xs md:text-lg text-gray-700 ">
-										Row Vector
+										Column Vector
 									</label>
 									<input
 										className="accent-cyan-800   "
@@ -209,6 +218,61 @@ function Array() {
 									/>
 								</div>
 							</div>
+							<div className="flex justify-start items-center space-x-4">
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-xs md:text-lg text-gray-700 ">
+										without braces
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="  "
+										checked={braceType === "  "}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-gray-700 text-xs md:text-lg  ">
+										 flower bracket
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="{}"
+										checked={braceType === "{}"}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-xs md:text-lg text-gray-700 ">
+										square bracket
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="[]"
+										checked={braceType === "[]"}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+								<div className="flex justify-center items-center space-x-2">
+									<label className="text-gray-700 text-xs md:text-lg  ">
+										 bracket
+									</label>
+									<input
+										className="accent-cyan-800   "
+										type="radio"
+										name="braceType"
+										value="()"
+										checked={braceType === "()"}
+										onChange={handlebraceTypeChange}
+									/>
+								</div>
+							</div>
+
 							<button
 								type="submit"
 								className="text-sky-800 text-xl text-center border-2 border-sky-800 md:w-full rounded-lg p-2 focus:shadow-xl active:shadow-sm  active:text-gray-200 active:bg-sky-800 select-none w-full "
