@@ -1,13 +1,14 @@
 import React from "react";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 import Javed from "./images/Javed.jpg";
-import JV from "./images/JV.jpg";
+import JV from "./images/JV.jpeg";
 import Sooraj from "./images/Sooraj.jpg";
 
 function Contact() {
 	return (
 		<div className="pb-40 bg-gray-200">
-			<div className="flex justify-center text-2xl md:text-4xl  pt-5 font-bold bg-gradient-to-r from-sky-900 via-sky-500 to-cyan-600 text-transparent bg-clip-text p-2">
+				<div className="flex justify-center text-2xl md:text-4xl  pt-5 font-bold bg-gradient-to-r from-sky-900 via-sky-500 to-cyan-600 text-sky-800 bg-clip-text p-2">
+
 				The Founding Fathers
 			</div>
 			<div className="group flex flex-col md:flex-row justify-center items-center mx-20 my-10  ">
