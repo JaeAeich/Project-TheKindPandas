@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
+import LineChart from "./LineChart";
 
 function Array() {
 	const [upperBound, setUpperBound] = useState("");
@@ -10,6 +11,7 @@ function Array() {
 	const [numVectors, setNumVectors] = useState(1);
 	const [vectorType, setVectorType] = useState("row");
 	const [braceType, setbraceType] = useState("  ");
+	const [data, setData] = useState(null);
 	const [answer, setAnswer] = useState(null);
 	const [error, setError] = useState(null);
 
@@ -89,7 +91,8 @@ function Array() {
 			}
 			randVecs.push(randVec);
 		}
-		console.log(randVecs);
+		setData(randVecs);
+		// console.log(randVecs);
 
 		// format vector as string
 		let answer = "";
@@ -298,6 +301,9 @@ function Array() {
 							</div>
 						</div>
 					)}
+				</div>
+				<div className="mb-96">
+					<LineChart randVecs={data} />
 				</div>
 			</div>
 		</div>
