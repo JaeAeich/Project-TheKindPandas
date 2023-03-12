@@ -5,6 +5,7 @@ import { MdOutlineDraw } from "react-icons/md";
 import { Link } from "react-router-dom";
 import GraphVis from "./GraphVis";
 
+
 function RandomGraph() {
 	const [numNodes, setNumNodes] = useState(5);
 	const [numEdges, setNumEdges] = useState(5);
