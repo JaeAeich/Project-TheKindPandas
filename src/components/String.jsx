@@ -6,6 +6,7 @@ function StringGenerator() {
 	const [numStrings, setNumStrings] = useState(" ");
 	const [includeLowercase, setIncludeLowercase] = useState(true);
 	const [includeUppercase, setIncludeUppercase] = useState(true);
+	const [separator, setSeparator] = useState(" ");
 	const [includeNumeric, setIncludeNumeric] = useState(false);
 	const [includeSpecial, setIncludeSpecial] = useState(false);
 	const [generatedStrings, setGeneratedStrings] = useState(null);
@@ -22,6 +23,10 @@ function StringGenerator() {
 
 	const handleIncludeLowercaseChange = (e) => {
 		setIncludeLowercase(e.target.checked);
+	};
+
+	const handleSeparatorChange = (e) => {
+		setSeparator(e.target.value);
 	};
 
 	const handleIncludeUppercaseChange = (e) => {
@@ -61,6 +66,10 @@ function StringGenerator() {
 		// generate strings
 		const strings = [];
 		const possibleChars = [];
+		let sep = separator.trim();
+		if (sep == "") {
+			sep = " ";
+		}
 		if (includeLowercase) possibleChars.push("abcdefghijklmnopqrstuvwxyz");
 		if (includeUppercase) possibleChars.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 		if (includeNumeric) possibleChars.push("0123456789");
@@ -74,6 +83,9 @@ function StringGenerator() {
 				const charSet = possibleChars[charSetIndex];
 				const charIndex = Math.floor(Math.random() * charSet.length);
 				newString += charSet.charAt(charIndex);
+			}
+			if (i > 0) {
+				strings[i - 1] += sep;
 			}
 			strings.push(newString);
 		}
@@ -119,6 +131,19 @@ function StringGenerator() {
 									value={stringLength}
 									onChange={handleStringLengthChange}
 									required
+								/>
+							</div>
+							<div className="space-x-2 md:text-2xl md:space-x-6  text-sm flex justify-between items-center">
+								<label className="text-gray-700" htmlFor="separator">
+									Separator:
+								</label>
+								<input
+									className="rounded-md focus:outline-sky-800 outline-offset-2 text-cyan-800 text-center"
+									type="text"
+									id="separator"
+									name="separator"
+									value={separator}
+									onChange={handleSeparatorChange}
 								/>
 							</div>
 							<div className="space-y-2 md:text-2xl text-sm flex-col justify-center items-center">
