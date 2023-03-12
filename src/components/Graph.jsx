@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
-import GraphTest from "./GraphTest"
+import GraphVis from "./GraphVis"
 
 function RandomGraph() {
   const [numNodes, setNumNodes] = useState(5);
@@ -150,8 +150,8 @@ function RandomGraph() {
             </div>
           )}
         </div>
-        <div className="mb-96 ">
-        <GraphTest pair={pair} numNodes={numNodes}/>
+        <div className="mb-96 absolute">
+        <GraphVis pair={pair} numNodes={numNodes}/>
         </div>
       </div>
     </div>

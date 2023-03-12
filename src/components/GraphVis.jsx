@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import vis from 'vis';
 
-const GraphTest = ({pair}) => {
+const GraphVis = ({pair, numNodes}) => {
   const containerRef = useRef(null);
   const network = useRef(null);
 
@@ -66,27 +66,28 @@ const GraphTest = ({pair}) => {
       }
     };
 
-    const nodes = new vis.DataSet([
-      { id: 1, label: 'Node 1' },
-      { id: 2, label: 'Node 2' },
-      { id: 3, label: 'Node 3' },
-      { id: 4, label: 'Node 4' },
-      { id: 5, label: 'Node 5' }
-    ]);
 
-    const edges = new vis.DataSet([
-      { from: 1, to: 2 },
-      { from: 1, to: 3 },
-      { from: 2, to: 4 },
-      { from: 2, to: 5 }
-    ]);
+    const nodes = [];
+    for (let i = 1; i <= numNodes; i++) {
+      nodes.push({ id: i, label: `Node ${i}` });
+    }
+    const nodesDataSet = new vis.DataSet(nodes);
+    
+    const pairData = pair.map(edge => {
+        const [from, to] = edge.split(" ");
+        return { from: parseInt(from), to: parseInt(to) };})
+
+
+    const edges = new vis.DataSet(pairData);
+
+      console.log(edges);
 
     const data = { nodes, edges };
 
     network.current = new vis.Network(containerRef.current, data, options);
-  }, []);
+  }, [pair]);
 
   return <div ref={containerRef} style={{ height: '640px' }} />;
 };
 
-export default GraphTest;
+export default GraphVis;
