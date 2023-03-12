@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Case Craft :desktop_computer:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Available Scripts
+## Description :green-book:
 
-In the project directory, you can run:
+Case Craft is a web application built with React that generates test cases for strings, arrays of numbers, or graphs. The application is designed to help developers test their code by generating a variety of test cases with ease.
 
-### `npm start`
+## Features :star:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Generates test cases for strings, arrays of numbers, or graphs.
+- Allows customization of test case parameters such as length and separators.
+- Provides visual representations of generated test cases for better understanding.
+- Allows for easy copy and paste of generated test cases.
+- Provides a user-friendly interface for easy use.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Getting Started :rocket:
 
-### `npm test`
+To get started with Case Craft, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository to your local machine using `git clone https://github.com/JaeAeich/Project-TheKindPandas.git`.
+2. Install the required packages by running `npm i --legacy-peer-deps`.
+3. Start the application by running `npm run dev`.
+4. Open your browser and access the application over your local host.
 
-### `npm run build`
+### Built With :hammer_and_wrench:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React: JavaScript library for building user interfaces
+- Vite: A build tool providing efficient development server and build time.
+- Tailwind: A utility-first CSS framework that helps you design and customize your UI quickly.
+- Chart-js: A JavaScript library for creating customizable and responsive charts.
+- vis-js: A JavaScript library for visualizing data using customizable network.
+- React-icons: A library of reusable, scalable icons for React applications.
+- React-router-dom: A package that provides routing capabilities to React applications.
+- React-typed: A package that allows type checking for React props and state.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Acknowledgment :raised_hands:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Case Craft was inspired by the need for an easy-to-use test case generator for developers. We would like to thank the open-source community for providing the tools and resources necessary to build this application.
 
-### `npm run eject`
+## Authors :man_office_worker:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Javed Habib - [@JaeAeich](https://github.com/JaeAeich)
+- JV Aditya - [@sgccs](https://github.com/sgccs)
+- Sooraj Reddy - [@sooraj-reddy](https://github.com/sooraj-reddy)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License :heavy_check_mark:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
