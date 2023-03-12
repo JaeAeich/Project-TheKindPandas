@@ -3,6 +3,7 @@ import { AiFillCopy } from "react-icons/ai";
 import GraphVis from "./GraphVis"
 
 
+
 function RandomGraph() {
   const [numNodes, setNumNodes] = useState(5);
   const [numEdges, setNumEdges] = useState(5);
