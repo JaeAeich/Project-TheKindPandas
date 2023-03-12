@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
+import { MdOutlineDraw } from "react-icons/md";
 import LineChart from "./LineChart";
 
 function Array() {
@@ -14,6 +16,7 @@ function Array() {
 	const [data, setData] = useState(null);
 	const [answer, setAnswer] = useState(null);
 	const [error, setError] = useState(null);
+	const [openGraph, setOpenGraph] = useState(false);
 
 	const handleUpperBoundChange = (e) => {
 		setUpperBound(e.target.value);
@@ -40,6 +43,14 @@ function Array() {
 	};
 	const handlebraceTypeChange = (e) => {
 		setbraceType(e.target.value);
+	};
+	const handleOpenGraph = (e) => {
+		setOpenGraph(true);
+	};
+	const handleCloseGraph = (e) => {
+		if (openGraph) {
+			setOpenGraph(false);
+		}
 	};
 
 	const handleSubmit = (e) => {
@@ -120,8 +131,17 @@ function Array() {
 	}
 
 	return (
-		<div className=" md:flex justify-center items-center bg-gray-200">
-			<div className="mini-container w-screen max-w-[720px] ">
+		<div
+			className="flex justify-center items-center bg-gray-200 w-screen overflow-hidden"
+			onClick={handleCloseGraph}
+		>
+			<div
+				className={
+					openGraph
+						? "mini-container w-screen max-w-[720px] blur-sm"
+						: "mini-container w-screen max-w-[720px]"
+				}
+			>
 				<div className="flex-col  justify-center items-center">
 					<div className="array-form p-4">
 						<form onSubmit={handleSubmit} className="flex-col space-y-4">
@@ -290,11 +310,19 @@ function Array() {
 							<div className="ans border-2 border-sky-800 p-2 rounded-lg overflow-y-scroll max-h-44 overflow-x-hidden break-words">
 								<div className="ans-header flex justify-between items-center p-3 text-sky-800 font-bold">
 									<div className="text-lg md:text-xl">Answer</div>
-									<div
-										className="text-xl md:text-2xl border-2 rounded-lg border-sky-800 p-2 hover:shadow-md active:bg-sky-800 active:text-gray-200 active:shadow-2xl"
-										onClick={handleCopyClick}
-									>
-										<AiFillCopy />
+									<div className="flex gap-2">
+										<div
+											className="text-xl md:text-2xl border-2 rounded-lg border-sky-800 p-2 hover:shadow-md active:bg-sky-800 active:text-gray-200 active:shadow-2xl"
+											onClick={handleCopyClick}
+										>
+											<AiFillCopy />
+										</div>
+										<div
+											className="text-xl md:text-2xl border-2 rounded-lg border-sky-800 p-2 hover:shadow-md active:bg-sky-800 active:text-gray-200 active:shadow-2xl"
+											onClick={handleOpenGraph}
+										>
+											<MdOutlineDraw />
+										</div>
 									</div>
 								</div>
 								{error ? error : answer}
@@ -302,8 +330,22 @@ function Array() {
 						</div>
 					)}
 				</div>
-				<div className="mb-96 ">
+			</div>
+			<div
+				className={
+					openGraph
+						? "absolute w-full z-10 h-full flex justify-center items-center"
+						: "hidden"
+				}
+			>
+				<div className="flex justify-center items-center w-full md:w-1/2 h-1/2 p-2 border-2 border-sky-800 rounded-lg hover:scale-110 duration-300 ">
 					<LineChart randVecs={data} />
+					<div
+						className="close-btn absolute bg-red-400 text-gray-200 rounded-lg top-0 right-0 p-2 hover:bg-red-600"
+						onClick={handleCloseGraph}
+					>
+						<AiOutlineClose />
+					</div>
 				</div>
 			</div>
 		</div>
