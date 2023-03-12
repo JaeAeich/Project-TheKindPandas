@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
+import GraphTest from "./GraphTest"
 
 function RandomGraph() {
   const [numNodes, setNumNodes] = useState(5);
@@ -10,9 +11,9 @@ function RandomGraph() {
   // const [ansFlag, setAnsFlag] = useState(false);
 
   useEffect(() => {
-    console.log("changed")
+    console.log(pair)
     renderPairs();
-  }, [pair, graphData])
+  }, [ graphData])
   
 
   const handlesetNumNodes = (e) => setNumNodes(e.target.value);
@@ -87,7 +88,7 @@ function RandomGraph() {
   }
 
   return (
-    <div className=" md:flex justify-center items-center">
+    <div className=" md:flex justify-center items-center bg-gray-200">
       <div className="mini-container w-screen max-w-[720px] ">
         <div className="flex-col  justify-center items-center">
           <div className="graph-form p-4">
@@ -148,6 +149,9 @@ function RandomGraph() {
               </div>
             </div>
           )}
+        </div>
+        <div className="mb-96 ">
+        <GraphTest pair={pair} numNodes={numNodes}/>
         </div>
       </div>
     </div>
