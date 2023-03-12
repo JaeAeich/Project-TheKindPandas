@@ -80,14 +80,13 @@ const GraphVis = ({pair, numNodes}) => {
 
     const edges = new vis.DataSet(pairData);
 
-      console.log(edges);
 
     const data = { nodes, edges };
 
     network.current = new vis.Network(containerRef.current, data, options);
   }, [pair]);
 
-  return <div ref={containerRef} style={{ height: '640px' }} />;
+  return <div ref={containerRef} style={{ height: "100%" }} />;
 };
 
 export default GraphVis;
