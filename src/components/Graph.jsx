@@ -4,6 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { MdOutlineDraw } from "react-icons/md";
 import GraphVis from "./GraphVis";
 
+
 function RandomGraph() {
 	const [numNodes, setNumNodes] = useState(5);
 	const [numEdges, setNumEdges] = useState(5);

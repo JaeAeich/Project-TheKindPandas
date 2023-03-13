@@ -73,7 +73,7 @@ function Contact() {
 							<div
 								className="gh flex items-center space-x-1 cursor-pointer"
 								onClick={() =>
-									window.open("https://github.com/JaeAeich", "_blank")
+									window.open("https://github.com/sgccs", "_blank")
 								}
 							>
 								<div className="logo text-sky-800">
