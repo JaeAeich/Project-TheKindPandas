@@ -7,6 +7,7 @@ import String from "./components/String";
 import NoPage from "./components/NoPage";
 import Contact from "./components/Contact";
 import RandomGraph from "./components/Graph";
+import CustomGraph from "./components/CustomGraph";
 function App() {
 	return (
 		<div className="App bg-gray-200 h-screen w-screen ">
@@ -18,6 +19,7 @@ function App() {
 					<Route path="/string" element={<String />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/Graph" element={<RandomGraph />} />
+					<Route path="/CustomGraph" element={<CustomGraph />} />
 					<Route path="*" element={<NoPage />} />
 				</Routes>
 			</BrowserRouter>
