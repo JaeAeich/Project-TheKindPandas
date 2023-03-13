@@ -133,7 +133,7 @@ function Array() {
 	return (
 		<div
 			className="flex justify-center items-center bg-gray-200 w-screen overflow-hidden"
-			onClick={handleCloseGraph}
+			// onClick={handleCloseGraph}
 		>
 			<div
 				className={
@@ -338,10 +338,10 @@ function Array() {
 						: "hidden"
 				}
 			>
-				<div className="flex justify-center items-center w-full md:w-1/2 h-1/2 p-2 border-2 border-sky-800 rounded-lg hover:scale-110 duration-300 ">
+				<div className="flex relative m-1 justify-center items-center w-full md:w-1/2 h-1/2 p-2 border-2 border-sky-800 rounded-lg hover:scale-110 duration-300">
 					<LineChart randVecs={data} />
 					<div
-						className="close-btn absolute bg-red-400 text-gray-200 rounded-lg top-0 right-0 p-2 hover:bg-red-600"
+						className="close-btn absolute bg-red-800 text-gray-200 rounded-lg top-0 right-0 p-2 hover:bg-red-600 m-1"
 						onClick={handleCloseGraph}
 					>
 						<AiOutlineClose />
