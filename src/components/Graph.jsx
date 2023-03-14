@@ -100,6 +100,7 @@ function RandomGraph() {
 			const to = graphData.nodes.find((n) => n.id === graphData.edges[i].to);
 			pairs.push(`${from.id} ${to.id}`);
 		}
+    console.log(pairs);
 		setPair(pairs);
 	};
 	function handleCopyClick() {
