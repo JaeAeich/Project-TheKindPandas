@@ -89,7 +89,6 @@ function StringGenerator() {
 			}
 			strings.push(newString);
 		}
-
 		setGeneratedStrings(strings);
 		setIsGenerating(false);
 	};

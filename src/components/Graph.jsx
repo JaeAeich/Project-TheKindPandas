@@ -1,4 +1,3 @@
-import { Button } from "@microsoft/fast-foundation";
 import React, { useEffect, useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
@@ -101,6 +100,7 @@ function RandomGraph() {
 			const to = graphData.nodes.find((n) => n.id === graphData.edges[i].to);
 			pairs.push(`${from.id} ${to.id}`);
 		}
+    console.log(pairs);
 		setPair(pairs);
 	};
 	function handleCopyClick() {
