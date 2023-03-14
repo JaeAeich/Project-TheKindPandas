@@ -7,11 +7,12 @@ import GraphVis from "./GraphVis";
 
 function RandomGraph() {
 	const [numNodes, setNumNodes] = useState();
+	const [numEdges, setNumEdges] = useState();
 	const [numCoordinates, setNumCoordinates] = useState("");
 	const [pair, setPair] = useState([]);
 	// const [closeGraph, setCloseGraph] = useState(true);
 	const [openGraph, setOpenGraph] = useState(false);
-	// const [error, setError] = useState(null);
+	const [error, setError] = useState(null);
 	// const [ansFlag, setAnsFlag] = useState(false);
 
 	
@@ -49,16 +50,20 @@ function RandomGraph() {
 		}
 
 		const nodes = [];
-
 		// Generate nodes
 		for (let i = 1; i <= numNodes; i++) {
 			nodes.push({ id: i, label: `Node ${i}` });
 		}
-
-		// for (let i=1; i<= numEdges; i++){
-			const pairs = [];
-			for(let i=0; i< 4*numEdges; i=i+4){
-
+		const pairs = [];
+		for(let i=0; i< 4*numEdges; i=i+4){
+			if (
+	    isNaN(parseInt(numCoordinates[i]))||
+	    isNaN(parseInt(numCoordinates[i+2]))
+			) {
+	  setError("Invalid input value. Please enter a valid integer value.");
+	  break;
+	}
+				
 				pairs.push(numCoordinates.slice(i,i+3));
 			}
 			console.log(pairs);
@@ -100,7 +105,18 @@ function RandomGraph() {
 									required
 								/>
 							</div>
-							
+							<div className="space-x-2 md:text-2xl md:space-x-6  text-sm flex justify-between items-center">
+								<label className="text-gray-700" htmlFor="numEdges">
+									Number of edges:
+								</label>
+								<input
+									className="rounded-md focus:outline-sky-800 outline-offset-2 text-cyan-800 text-center "
+									type="number"
+									value={numEdges}
+									onChange={handlesetNumEdges}
+									required
+								/>
+							</div>
 							<div className="space-x-2 md:text-2xl md:space-x-6  text-sm flex justify-between items-center">
 								<label className="text-gray-700" htmlFor="numEdges">
 									Graph coordinates: 
