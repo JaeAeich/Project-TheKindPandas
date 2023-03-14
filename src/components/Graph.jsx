@@ -152,6 +152,7 @@ function RandomGraph() {
 							>
 								Generate graph
 							</button>
+
 							<Link to="/CustomGraph">
 								<div className="mt-2 relative text-sky-800 text-xl text-center border-2 border-sky-800 md:w-full rounded-lg p-2 focus:shadow-xl active:shadow-sm  active:text-gray-200 active:bg-sky-800 select-none w-full animate-pulse  ">
 									<span className="absolute top-0 right-0 bg-sky-800 text-gray-200 rounded-lg m-1 p-2 text-sm">
@@ -160,6 +161,7 @@ function RandomGraph() {
 									Visualise Custom graph
 								</div>
 							</Link>
+
 						</form>
 					</div>
 					{graphData?.nodes?.length > 0 && (
