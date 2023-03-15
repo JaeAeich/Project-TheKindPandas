@@ -130,7 +130,7 @@ function RandomGraph() {
 								/>
 							</div>
 							<div className="text-cyan-800">
-							<p>The format for filling the graph coordinates:<br></br>In case of [[1,1],[2,2]] is "1(%)1(%)2(%)2" where " is null character and (%) is any character.</p>
+							<p>The format for filling the graph coordinates:<br></br>In case of [[1,1],[2,2]] is "1 1(%)2 2" where " is null character and (%) is any character.</p>
 							</div>
 							<button
 								type="submit"
