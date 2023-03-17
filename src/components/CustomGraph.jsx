@@ -63,8 +63,13 @@ function RandomGraph() {
 	  setError("Invalid input value. Please enter a valid integer value.");
 	  break;
 	}
+			const substrings = s.split(" ");
+			const pairs = [];
+
+			for (let i = 0; i < substrings.length; i += 2) {
+			pairs.push(`${substrings[i]} ${substrings[i+1]}`);
+			}
 				
-				pairs.push(numCoordinates.slice(i,i+3));
 			}
 			console.log(pairs);
 			setPair(pairs);
