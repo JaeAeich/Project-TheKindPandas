@@ -63,17 +63,21 @@ function RandomGraph() {
 	  setError("Invalid input value. Please enter a valid integer value.");
 	  break;
 	}
-			const substrings = s.split(" ");
+
+	
+			const substrings = numCoordinates.split(" ");
+			console.log(substrings)
 			const pairs = [];
 
 			for (let i = 0; i < substrings.length; i += 2) {
-			pairs.push(`${substrings[i]} ${substrings[i+1]}`);
+			pairs.push(substrings[i]+" "+substrings[i+1]);
+
 			}
 				
-			}
+
 			console.log(pairs);
 			setPair(pairs);
-
+}
 		// // Set graph data
 		// setGraphData({ nodes: nodes, edges: numCoordinates });
 		// renderPairs();
